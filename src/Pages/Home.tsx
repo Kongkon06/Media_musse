@@ -40,7 +40,7 @@ function Home() {
      <footer className="bg-gray-800 text-white py-8">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Navigation Links */}
-                <div>
+                <div className='flex flex-col items-center'>
                     <h3 className="text-xl font-bold mb-4">Quick Links</h3>
                     <ul>
                         <li><a href="#" className="hover:underline">Home</a></li>
@@ -51,7 +51,7 @@ function Home() {
                 </div>
 
                 {/* Contact Information */}
-                <div>
+                <div className='flex flex '>
                     <h3 className="text-xl font-bold mb-4">Contact Us</h3>
                     <p>123 Music Avenue</p>
                     <p>City, State, 12345</p>

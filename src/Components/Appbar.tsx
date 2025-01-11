@@ -12,7 +12,7 @@ export const Appbar = ()=>{
                 {/* Categories and Offline Buy */}
                 <div className="hidden md:flex items-center space-x-4">
                     <a href="#" onClick={()=>navigate('/Categories')} className="text-white hover:text-yellow-500">Categories</a>
-                    <a href="#" className="text-white hover:text-yellow-500">Offline Buy</a>
+                    <a href="Agent" className="text-white hover:text-yellow-500">Offline Buy</a>
                 </div>
                 {/* Search Bar */}
                 <div className="flex-grow mx-4">
