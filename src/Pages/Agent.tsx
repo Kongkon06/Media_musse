@@ -1,7 +1,7 @@
 import { Appbar } from "../Components/Appbar";
 import { SearchBar } from "../Components/SearchBar";
 import { StoreCard } from "../Components/StoreCard";
-import instrumentsImage from '../assets/instrumentsjpg.jpg';
+import instrumentsImage from '/instrumentstorejpg.jpg';
 
 export function Agent(){
     return <div className="h-dvh">
@@ -12,9 +12,8 @@ export function Agent(){
             <div className="flex justify-center ">
                 <SearchBar/>
             </div>
-            <img src="../assets/instrumentsjpg.jpg" alt="Instruments"/>
-            <div className="my-10 text-xl flex justify-center items-center">.
-              <StoreCard name="Kongkon Store" address="Komolata pati, New Work, USA" src=""/>
+            <div className="my-10 text-xl p-4 flex justify-center items-center">.
+              <StoreCard name="Kongkon Store" address="Komolata pati, New Work, USA" src={instrumentsImage}/>
             </div>
             </div>
         </div>
