@@ -7,7 +7,7 @@ export function Product(){
             <div className="w-1/5 bg-slate-200">
             </div>
             <div className="fles h-full grid grid-cols-3">
-
+            Product Page
             </div>
         </div>
     </div>

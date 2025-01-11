@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom"
 
 export const Appbar = ()=>{
     const navigate = useNavigate();
-    return (
-        <nav className="bg-blue-700 p-4 shadow-md">
+    return <nav className="bg-blue-700 p-4 shadow-md">
             <div className="container mx-auto flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center space-x-4">
@@ -35,5 +34,4 @@ export const Appbar = ()=>{
                 </div>
             </div>
         </nav>
-    );
 }
