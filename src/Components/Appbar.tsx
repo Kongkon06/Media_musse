@@ -89,7 +89,7 @@ export const Appbar = () => {
             >
                 <div className={`container relative flex items-center ${expanded ? "justify-between" : "justify-center"}`}>
                     {/* Logo */}
-                    <div className={`logo-container ${expanded ? "relative" : "absolute"}`}>
+                    <div role="button" onClick={()=>navigate("/")} className={`logo-container ${expanded ? "relative" : "absolute"}`}>
                         <svg width="501" className="h-8" viewBox="0 0 501 111" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M140.285 28.2023L175 13.5C175 13.5 174.143 43.5 176.5 54.5C178.857 65.5 187.286 68.9804 196.5 71.5C208.227 74.7071 222.5 72 221.5 53C220.5 34 191 33 191 33V2L244.785 1.83956C244.785 1.83956 249 69 236 91C223 113 182.423 110.333 182.423 110.333C182.423 110.333 184.902 96.1372 172.508 85.4907C160.115 74.8442 140.285 78.393 140.285 78.393V28.2023Z" fill="black" />
                             <path d="M453.5 28C439.624 28 428.491 39.1327 428 53C427.802 58.588 428.595 66.2227 431.5 71C436.589 79.3684 444.775 82.1599 454.5 81C463.809 79.8899 474 67 474 67L500.5 79.5C500.5 79.5 483.953 102.385 468 107.5C452.327 112.526 436.084 109 426 104C411.89 97.0036 403.966 88.5 398.5 74.5C394.401 64 393.036 39.9543 404.5 23.5C418.036 4.07218 437.523 -1.57893 461 1.50004C491.5 5.5 500.5 31 500.5 31L472.5 43C472.5 43 465.5 28 453.5 28Z" fill="black" />
@@ -145,7 +145,7 @@ export const Appbar = () => {
                     {/* Login Button */}
                     <div className={`${expanded ? "menu-visible" : "menu-hidden"}`}>
                         <a
-                            href="#"
+                            href="/Auth"
                             className="login-button bg-yellow-500 text-white px-6 py-2 rounded-xl hover:bg-yellow-400"
                         >
                             Login

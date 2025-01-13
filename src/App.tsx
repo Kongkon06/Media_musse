@@ -4,10 +4,11 @@ import Home from './Pages/Home'
 import { Categories } from './Pages/Categories'
 import { Agent } from './Pages/Agent'
 import { Auth } from './Pages/Auth'
+import { RecoilRoot } from 'recoil'
 
 function App() {
 
-  return <div>
+  return <RecoilRoot>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
@@ -16,8 +17,7 @@ function App() {
       <Route path='/Categories' element={<Categories/>}></Route>
       <Route path='/Agent' element={<Agent/>}></Route>
     </Routes>
-    </BrowserRouter>
-  </div>
+    </BrowserRouter></RecoilRoot>
 }
 
 export default App

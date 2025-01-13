@@ -1,48 +1,19 @@
+import { useRecoilValue } from "recoil";
 import { Appbar } from "../Components/Appbar";
 import { SearchBar } from "../Components/SearchBar";
 import { StoreCard } from "../Components/StoreCard";
+import { randomstores } from "../States/Atom";
 
 export function Agent() {
-  const stores = [
-    {
-      id: 1,
-      name: "Kongkon Store",
-      address: "Komolata Pati, New York, USA",
-      src: "/instrumentstorejpg.jpg",
-    },
-    {
-      id: 2,
-      name: "Harmony Music Center",
-      address: "Downtown Street, Los Angeles, USA",
-      src: "/instrument.jpg",
-    },
-    {
-      id: 3,
-      name: "Melody Shop",
-      address: "Park Avenue, Chicago, USA",
-      src: "/streetinstrument.jpg",
-    },
-    {
-      id: 4,
-      name: "Symphony Instruments",
-      address: "Broadway Lane, Houston, USA",
-      src: "/brook.jpg",
-    },
-    {
-      id: 5,
-      name: "Orchestra Hub",
-      address: "Bay Area, San Francisco, USA",
-      src: "/stwewarts.jpg",
-    },
-  ];
-
+  const stores = useRecoilValue(randomstores);
   return (
     <div className="h-dvh">
       <Appbar />
       <div className="flex h-full">
         <div className="w-1/5 h-full bg-slate-200"> hti</div>
         <div className="w-4/5 mt-10">
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center font-dm-sans gpa-10 pt-16 px-8">
+            <div className="flex text-xl"> We are <div className="text-green-400 underline mx-2">available</div> in most parts of India</div>
             <SearchBar />
           </div>
           <div className="my-10 text-xl p-4 flex flex-wrap justify-center items-center gap-6">

@@ -37,7 +37,7 @@ export function Categories() {
   console.log(state);
 
   return (
-    <div className="h-dvh">
+    <div className="h-dvh pt-16">
       <Appbar />
       <div className="flex h-full">
         <div className="flex w-1/5 h-full pt-10 px-4 flex-col gap-10 bg-slate-200">
