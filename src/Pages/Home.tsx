@@ -4,7 +4,7 @@ import { Hero } from '../Components/Hero'
 import Deals, {  } from "./Deals";
 function Home() {
 
-  return <div className=''>
+  return <div className='relative py-12'>
       <Appbar/>
       <div className='h-[60vh]'>
       <Hero/>

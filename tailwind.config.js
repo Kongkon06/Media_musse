@@ -15,7 +15,11 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"DM Sans"', "sans-serif"], // Add DM Sans as a font family
+      },
+    },
   },
   plugins: [],
 }
