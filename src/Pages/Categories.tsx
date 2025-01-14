@@ -1,36 +1,51 @@
 import { useState } from "react";
 import { Appbar } from "../Components/Appbar";
+import { Card } from "../Components/Card";
 
 export function Categories() {
-  const category = {
-    Instruments: ["Guitar", "Keyboard", "Piano", "Drums", "Percussion"],
+  type CategoryItem = { name: string; image?: string };
+type Categories = {
+  Instruments: CategoryItem[];
+  SoundandProduction_Software: CategoryItem[];
+  Audio_Equipment: CategoryItem[];
+  Accessories: CategoryItem[];
+  Sheet_MusicandBooks: CategoryItem[];
+};
+  const categories: Categories = {
+    Instruments: [
+      { name: "Guitar", image: "/public/guitar.jpg" },
+      { name: "Keyboard", image: "/public/keyboard.jpg" },
+      { name: "Piano", image: "/public/piano.jpg" },
+      { name: "Drums", image: "/public/drums.jpg" },
+      { name: "Percussion", image: "/public/precussion.jpg" },
+    ],
     SoundandProduction_Software: [
-      "Digital Audio Workstations (DAWs)",
-      "VST Plugins & Effects",
-      "Loop Libraries",
+      { name: "Digital Audio Workstations (DAWs)",image:"/public/digital.jpg" },
+      { name: "VST Plugins & Effects", image:"/public/plugin.jpg" },
+      { name: "Loop Libraries" },
     ],
     Audio_Equipment: [
-      "Microphones",
-      "Audio Interfaces",
-      "Studio Interfaces",
-      "Studio Monitors",
+      { name: "Microphones",image:"" },
+      { name: "Audio Interfaces" },
+      { name: "Studio Interfaces" },
+      { name: "Studio Monitors" },
     ],
     Accessories: [
-      "Guitar Picks",
-      "Stand & Mounts",
-      "Tuners & Metronome",
-      "Cases & Bags",
-      "Cables & Connectors",
-      "Straps",
+      { name: "Guitar Picks" },
+      { name: "Stand & Mounts" },
+      { name: "Tuners & Metronome" },
+      { name: "Cases & Bags" },
+      { name: "Cables & Connectors" },
+      { name: "Straps" },
     ],
     Sheet_MusicandBooks: [
-      "Music Sheets (for different instruments)",
-      "Music Theory Books",
-      "Music Education (method books)",
+      { name: "Music Sheets (for different instruments)" },
+      { name: "Music Theory Books" },
+      { name: "Music Education (method books)" },
     ],
   };
 
-  type CategoryKeys = keyof typeof category;
+  type CategoryKeys = keyof typeof categories;
 
   const [state, setState] = useState<CategoryKeys>("Instruments");
 
@@ -64,10 +79,21 @@ export function Categories() {
           <div className="my-16 text-2xl px-4 font-bold">{state}</div>
           <div className="px-4">
           <div className="grid grid-cols-4 gap-10">
-            {category[state].map((item, index) => (
-              <div key={index} className="p-4 h-36 bg-gray-200 rounded shadow">
-                {item}
+            {categories[state].map((item, index) => (
+              <Card
+              key={index}
+              className="relative group overflow-hidden shadow-lg h-56 transition-transform duration-300 hover:scale-105"
+            >
+              <img
+                className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:blur-sm"
+                src={item.image}
+                alt="Guitar"
+              />
+              <div className="relative text-2xl font-bold text-slate-200 p-4">
+                {item.name}
               </div>
+            </Card>
+            
             ))}
           </div>
           </div>
