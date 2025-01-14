@@ -67,9 +67,9 @@ export function BestSelling() {
               <div className="p-4">
                 <h3 className="font-semibold text-gray-800 mb-2">{item.name}</h3>
                 <div className="flex items-center gap-2">
-                  <span className="text-deal-purple font-bold">${item.price}</span>
+                  <span className="text-deal-purple font-bold">Rs {item.price}</span>
                   <span className="text-sm text-gray-400 line-through">
-                    ${item.originalPrice}
+                    Rs {item.originalPrice}
                   </span>
                 </div>
                 <Button 
@@ -79,7 +79,7 @@ export function BestSelling() {
                 </Button>
               </div>
               <div className="absolute top-2 right-2 bg-deal-orange text-white text-sm px-2 py-1 rounded-full">
-                Save ${item.originalPrice - item.price}
+                Save Rs {item.originalPrice - item.price}
               </div>
             </motion.div>
           ))}
