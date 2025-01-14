@@ -102,6 +102,12 @@ export const Appbar = () => {
                     {/* Categories and Offline Buy */}
                     <div className={`md:flex items-center space-x-6 ${expanded ? "menu-visible" : "menu-hidden"}`}>
                         <a
+                            onClick={() => navigate("/brands")}
+                            className="text-white hover:text-yellow-300 cursor-pointer transition-all duration-300 hover:-translate-y-0.5"
+                        >
+                            Brands
+                        </a>
+                        <a
                             onClick={() => navigate("/categories")}
                             className="text-white hover:text-yellow-300 cursor-pointer transition-all duration-300 hover:-translate-y-0.5"
                         >
