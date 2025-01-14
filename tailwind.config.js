@@ -19,6 +19,10 @@ module.exports = {
       fontFamily: {
         sans: ['"DM Sans"', "sans-serif"], // Add DM Sans as a font family
       },
+      colors: {
+        'deal-purple': '#6B46C1', // Replace with your desired purple color
+        'deal-orange': '#ED8936', // Replace with your desired orange color
+      },
     },
   },
   plugins: [],
