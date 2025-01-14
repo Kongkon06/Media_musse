@@ -8,7 +8,6 @@ import { RecoilRoot } from 'recoil'
 import {ProductPage} from './Pages/Product'
 import { Brands } from './Pages/Brands'
 import { ProductList } from './Pages/Productlist'
-import { Sidebar } from 'lucide-react'
 
 function App() {
 
