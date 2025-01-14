@@ -5,6 +5,7 @@ import { Categories } from './Pages/Categories'
 import { Agent } from './Pages/Agent'
 import { Auth } from './Pages/Auth'
 import { RecoilRoot } from 'recoil'
+import {ProductPage} from './Pages/Product'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Route path='/Auth' element={<Auth/>}></Route>
       <Route path='/Categories' element={<Categories/>}></Route>
       <Route path='/Agent' element={<Agent/>}></Route>
+      <Route path='/Product' element={<ProductPage/>}></Route>
     </Routes>
     </BrowserRouter></RecoilRoot>
 }
