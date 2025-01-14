@@ -179,27 +179,10 @@ export const Appbar = () => {
                 <input
                   type="search"
                   placeholder="Search musical instruments..."
-                  className="w-full py-5 pl-10 bg-white/90 border-none"
+                  className="w-full py-4 pl-10 bg-white/90 border-none"
                 />
               </div>
             </div>
-  
-            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-blue-600 transition-colors duration-300">
-  <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-  >
-      <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M8 4a6 6 0 0110.39 4.2 6 6 0 01-5.39 5.8M16 16l4 4"
-      />
-  </svg>
-</button>
 
             {/* Login Button */}
             <div className={`${expanded ? "menu-visible" : "menu-hidden"}`}>

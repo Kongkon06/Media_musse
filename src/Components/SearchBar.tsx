@@ -1,6 +1,6 @@
 import { SearchIcon } from 'lucide-react';
 import { useState, useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { randomstores } from '../States/Atom';
 
 interface Option {
@@ -68,7 +68,7 @@ export const SearchBar: React.FC<SearchSelectProps> = ({
       src: "/stwewarts.jpg",
     },
   ];
-  const [store ,setstore] = useRecoilState(randomstores);
+  const setstore = useSetRecoilState(randomstores);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>(defaultValue?.label || '');
   const [selectedOption, setSelectedOption] = useState<Option | null>(defaultValue || null);
