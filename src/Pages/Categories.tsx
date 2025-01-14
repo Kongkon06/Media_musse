@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Appbar } from "../Components/Appbar";
 import { Card } from "../Components/Card";
+import { useNavigate } from "react-router-dom";
 
 export function Categories() {
   type CategoryItem = { name: string; image?: string };
@@ -48,14 +49,14 @@ type Categories = {
   type CategoryKeys = keyof typeof categories;
 
   const [state, setState] = useState<CategoryKeys>("Instruments");
-
+  const navigate = useNavigate();
   console.log(state);
 
   return (
-    <div className="h-dvh pt-16">
+    <div className="h-dvh">
       <Appbar />
       <div className="flex h-full">
-        <div className="flex w-1/5 h-full pt-10 px-4 flex-col gap-10 bg-slate-200">
+        <div className="flex w-1/5 h-full pt-16 px-4 flex-col gap-10 bg-slate-200">
           <div role="button" onClick={() => setState("Instruments")}>
             Instruments
           </div>
@@ -75,12 +76,13 @@ type Categories = {
             Sheet Music & Books
           </div>
         </div>
-        <div className="w-4/5">
+        <div className="w-4/5 pt-16">
           <div className="my-16 text-2xl px-4 font-bold">{state}</div>
           <div className="px-4">
           <div className="grid grid-cols-4 gap-10">
             {categories[state].map((item, index) => (
               <Card
+              onClick={()=>{navigate(`/products/${item.name}`)}}
               key={index}
               className="relative group overflow-hidden shadow-lg h-56 transition-transform duration-300 hover:scale-105"
             >

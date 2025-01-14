@@ -179,7 +179,7 @@ export const Appbar = () => {
                 <input
                   type="search"
                   placeholder="Search musical instruments..."
-                  className="w-full py-4 pl-10 bg-white/90 border-none"
+                  className="w-full py-5 pl-10 bg-white/90 border-none"
                 />
               </div>
             </div>

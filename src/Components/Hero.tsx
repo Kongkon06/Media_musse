@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-<section className="w-full px-6 py-12 bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
+<section className="w-full px-6 py-8 bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-full mx-auto">
           {/* Main Hero (3/5) */}
           <motion.div 

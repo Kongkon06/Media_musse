@@ -10,7 +10,7 @@ const ProductCard = () => {
       {/* Image Container */}
       <div className="relative h-48 overflow-hidden rounded-t-lg">
         <img
-          src="/api/placeholder/400/320"
+          src="/guitar.jpg"
           alt="Product Image"
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
@@ -19,7 +19,7 @@ const ProductCard = () => {
       {/* Product Info */}
       <div className="space-y-1 p-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold text-lg">Product Name</h3>
+          <h3 className="font-semibold text-lg">Guitar</h3>
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-green-600">$99</span>
             <span className="text-sm text-gray-500 line-through">$129</span>
