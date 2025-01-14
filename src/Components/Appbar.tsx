@@ -145,6 +145,13 @@ export const Appbar = () => {
                 expanded ? "menu-visible" : "menu-hidden"
               }`}
             >
+                <Button
+                variant="ghost"
+                onClick={() => navigate("/brands")}
+                className="text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Brands
+              </Button>
               <Button
                 variant="ghost"
                 onClick={() => navigate("/categories")}
@@ -168,11 +175,11 @@ export const Appbar = () => {
               }`}
             >
               <div className="relative w-full">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 h-6 w-4 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="search"
                   placeholder="Search musical instruments..."
-                  className="w-full pl-10 bg-white/90 border-none"
+                  className="w-full py-5 pl-10 bg-white/90 border-none"
                 />
               </div>
             </div>
