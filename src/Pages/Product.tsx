@@ -6,9 +6,8 @@ import { motion } from 'framer-motion';
 import { Home, Package, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
 import { Card } from '../Components/Card';
-import { Appbar } from "../Components/Appbar";
 import { useRecoilState } from "recoil";
-import { Cart } from "../States/Atom";
+import { userCart } from "@/States/Atom";
 export const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
@@ -28,11 +27,7 @@ export const ProductPage = () => {
     ]
   };
   const handleAddToCart = () => {
-    console.log('Added to cart:', {
-      product: product.name,
-      quantity,
-      size: selectedSize,
-    });
+    setCart(cart + 1)
   };
   const sidebarItems = [
     { icon: Home, label: "Home", route: "/" },
@@ -41,12 +36,11 @@ export const ProductPage = () => {
     { icon: Tag, label: "Deals", route: "/deals" },
   ];
   const navigate = useNavigate();
-  const [cart,setCart] = useRecoilState(Cart);
+  const [cart,setCart] = useRecoilState(userCart)
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
-      <Appbar/>
      { /*<Appbar />*/}
-      <div className="flex flex-1 pt-8">
+      <div className="flex flex-1">
         {/* Sidebar */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -57,7 +51,7 @@ export const ProductPage = () => {
             <Button
               key={item.label}
               variant="ghost"
-              className="w-full justify-start gap-2 mb-2 text-base font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+              className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
               onClick={() => navigate(item.route)}
             >
               <item.icon className="h-5 w-5" />
@@ -70,7 +64,7 @@ export const ProductPage = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-7xl mt-8 mx-auto"
+            className="max-w-7xl mx-auto"
           >
             <Card className="p-6 bg-white/80 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -180,7 +174,7 @@ export const ProductPage = () => {
                       className="flex-1 bg-gradient-to-r from-deal-purple to-deal-orange text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                     >
                       <ShoppingCart className="w-5 h-5" />
-                      <span role="button" onClick={()=>{setCart(cart+1)}}>Add to Cart</span>
+                      <span>Add to Cart</span>
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.1 }}

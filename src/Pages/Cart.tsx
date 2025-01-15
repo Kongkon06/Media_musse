@@ -1,19 +1,25 @@
+import { useRecoilState } from "recoil";
 import { Appbar } from "../Components/Appbar";
 import { Button } from "../Components/Button";
-
+import { userCart } from "../States/Atom";
 export function Cart(){
+    const [cart,setCart] = useRecoilState(userCart);
     return <div className="min-h-screen flex gap-8 justify-center pt-16">
        <Appbar/>
        <div className="w-3/5 flex flex-col gap-6 h-full mt-16">
        <div className=" h-20 p-4 shadow-md">
         Deliver To
        </div>
-       <div className=" p-4 shadow-md">
-        <ItemsCard/>
+       <div className=" p-4 flex flex-col gap-4 shadow-md">
+       {Array.from({ length: cart }, (_, i) => (
+          <div key={i} className="">
+           <ItemsCard/>
+          </div>
+        ))}
        </div>
        </div>
-       <div className="w-1/5 h-full shadow-md mt-16">
-       hi there
+       <div className="w-1/5 h-full p-4 shadow-md mt-16">
+        <div className="text-xl">Price Details</div>
        </div>
     </div>
 }

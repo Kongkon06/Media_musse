@@ -1,8 +1,8 @@
 import { useRecoilState } from "recoil";
-import { Cart } from "../States/Atom";
+import { userCart } from "../States/Atom";
 
 const ProductCard = () => {
-  const [cart,setCart] = useRecoilState(Cart);
+  const [cart,setCart] = useRecoilState(userCart);
   return (
     <div className="group relative w-full max-w-sm rounded-lg border border-gray-200 bg-white transition-all duration-300 hover:shadow-lg">
       {/* Sale Badge */}

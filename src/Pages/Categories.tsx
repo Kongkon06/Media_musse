@@ -8,7 +8,7 @@ export function Categories() {
   type CategoryItem = { name: string; image?: string };
   type Categories = {
     Instruments: CategoryItem[];
-    SoundandProduction_Software: CategoryItem[];
+    Sound_and_Production_Software: CategoryItem[];
     Audio_Equipment: CategoryItem[];
     Accessories: CategoryItem[];
     Sheet_MusicandBooks: CategoryItem[];
@@ -21,7 +21,7 @@ export function Categories() {
       { name: "Drums", image: "/drums.jpg" },
       { name: "Percussion", image: "/precussion.jpg" },
     ],
-    SoundandProduction_Software: [
+    Sound_and_Production_Software: [
       { name: "Digital Audio Workstations (DAWs)", image: "/digital.jpg" },
       { name: "VST Plugins & Effects", image: "/plugin.jpg" },
       { name: "Loop Libraries" },
@@ -88,7 +88,7 @@ export function Categories() {
                       : "hover:bg-gray-100"
                   }`}
                 >
-                  <span className="text-base">
+                  <span className="text-lg">
                     {category.replace(/_/g, " ")}
                   </span>
                   <ChevronRight
