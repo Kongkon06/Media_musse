@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Home, Package, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
 import { Card } from '../Components/Card';
+import { Appbar } from "../Components/Appbar";
 export const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
@@ -40,8 +41,9 @@ export const ProductPage = () => {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
+      <Appbar/>
      { /*<Appbar />*/}
-      <div className="flex flex-1">
+      <div className="flex flex-1 pt-8">
         {/* Sidebar */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -65,7 +67,7 @@ export const ProductPage = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-7xl mx-auto"
+            className="max-w-7xl mt-8 mx-auto"
           >
             <Card className="p-6 bg-white/80 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

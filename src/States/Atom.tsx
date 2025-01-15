@@ -39,7 +39,7 @@ interface user{
 }
 export const Cart = atom({
     key:'Cart',
-    default:''
+    default:0
 });
 
 export const User = atom<user>({
