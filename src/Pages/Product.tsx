@@ -7,6 +7,8 @@ import { Home, Package, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
 import { Card } from '../Components/Card';
 import { Appbar } from "../Components/Appbar";
+import { useRecoilState } from "recoil";
+import { Cart } from "../States/Atom";
 export const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
@@ -39,6 +41,7 @@ export const ProductPage = () => {
     { icon: Tag, label: "Deals", route: "/deals" },
   ];
   const navigate = useNavigate();
+  const [cart,setCart] = useRecoilState(Cart);
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
       <Appbar/>
@@ -177,7 +180,7 @@ export const ProductPage = () => {
                       className="flex-1 bg-gradient-to-r from-deal-purple to-deal-orange text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                     >
                       <ShoppingCart className="w-5 h-5" />
-                      <span>Add to Cart</span>
+                      <span role="button" onClick={()=>{setCart(cart+1)}}>Add to Cart</span>
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.1 }}
