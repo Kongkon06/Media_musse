@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-//import { Appbar } from "../Components/Appbar";
 import { Button } from "../Components/Button";
 import { Home, Package, Store, Tag } from "lucide-react";
 
@@ -80,7 +79,7 @@ export function Brands() {
             <Button
               key={item.label}
               variant="ghost"
-              className="w-full justify-start gap-2 mb-2 text-base font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+              className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
               onClick={() => navigate(item.route)}
             >
               <item.icon className="h-5 w-5" />
