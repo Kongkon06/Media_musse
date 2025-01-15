@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { Button } from "./Button";
+import { Input } from "../Components/ui/input";
 
 export const Appbar = () => {
   const navigate = useNavigate();
@@ -199,7 +200,7 @@ export const Appbar = () => {
           >
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
+              <Input
                 type="search"
                 placeholder="Search musical instruments..."
                 className="w-full pl-10 bg-white/90 border-none rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
