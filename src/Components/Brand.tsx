@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export function Brands() {
+export function Brand() {
   const brands = [
     {
       id: 1,
