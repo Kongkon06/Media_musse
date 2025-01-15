@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "../Components/Button";
-import { Home, Package, Store, Tag } from "lucide-react";
+import { Home, Package, ShoppingCart, Store, Tag } from "lucide-react";
 
 export function Brands() {
   const navigate = useNavigate();
@@ -62,6 +62,7 @@ export function Brands() {
     { icon: Package, label: "Categories", route: "/categories" },
     { icon: Store, label: "Brands", route: "/brands" },
     { icon: Tag, label: "Deals", route: "/deals" },
+    { icon: ShoppingCart, label: "Cart", route: "/cart" },
   ];
 
   return (
