@@ -2,6 +2,7 @@ import { Appbar } from '../Components/Appbar'
 import Footer from '../Components/Footer';
 import { Hero } from '../Components/Hero'
 import { BestSelling } from "../Components/BestSelling";
+// import { Brands } from "../Components/Brands";
 import Deals, {  } from "./Deals";
 function Home() {
 
