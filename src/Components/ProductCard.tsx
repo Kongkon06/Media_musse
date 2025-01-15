@@ -24,8 +24,8 @@ const ProductCard = () => {
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-lg">Guitar</h3>
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-green-600">$99</span>
-            <span className="text-sm text-gray-500 line-through">$129</span>
+            <span className="text-lg font-bold text-green-600">Rs 99</span>
+            <span className="text-sm text-gray-500 line-through">Rs 129</span>
           </div>
         </div>
         <p className="text-sm text-gray-500">Category</p>
