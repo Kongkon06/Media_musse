@@ -34,6 +34,7 @@ export const ProductPage = () => {
     { icon: Package, label: "Categories", route: "/categories" },
     { icon: Store, label: "Brands", route: "/brands" },
     { icon: Tag, label: "Deals", route: "/deals" },
+    { icon: ShoppingCart, label: "Cart", route: "/cart" },
   ];
   const navigate = useNavigate();
   const [cart,setCart] = useRecoilState(userCart)
