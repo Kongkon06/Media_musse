@@ -37,9 +37,9 @@ interface user{
     name:string,
     email:string,
 }
-export const Cart = atom({
+export const userCart = atom({
     key:'Cart',
-    default:''
+    default:0
 });
 
 export const User = atom<user>({

@@ -190,6 +190,13 @@ export const Appbar = () => {
             >
               Offline Buy
             </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/cart")}
+              className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-base font-medium"
+            >
+              Cart
+            </Button>
           </div>
 
           {/* Search Bar */}
@@ -201,6 +208,11 @@ export const Appbar = () => {
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
+                onKeyDown={(e:any)=>{
+                  if(e.key == "Enter"){
+                    navigate('/products/guitar')
+                  }
+                }}
                 type="search"
                 placeholder="Search musical instruments..."
                 className="w-full pl-10 bg-white/90 border-none rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"

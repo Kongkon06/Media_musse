@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { Home, Package, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
 import { Card } from '../Components/Card';
+import { useRecoilState } from "recoil";
+import { userCart } from "@/States/Atom";
 export const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
@@ -25,11 +27,7 @@ export const ProductPage = () => {
     ]
   };
   const handleAddToCart = () => {
-    console.log('Added to cart:', {
-      product: product.name,
-      quantity,
-      size: selectedSize,
-    });
+    setCart(cart + 1)
   };
   const sidebarItems = [
     { icon: Home, label: "Home", route: "/" },
@@ -38,6 +36,7 @@ export const ProductPage = () => {
     { icon: Tag, label: "Deals", route: "/deals" },
   ];
   const navigate = useNavigate();
+  const [cart,setCart] = useRecoilState(userCart)
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
      { /*<Appbar />*/}

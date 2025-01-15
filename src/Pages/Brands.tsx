@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-//import { Appbar } from "../Components/Appbar";
 import { Button } from "../Components/Button";
 import { Home, Package, Store, Tag } from "lucide-react";
 
