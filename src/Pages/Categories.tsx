@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Appbar } from "../Components/Appbar";
+import Footer from '../Components/Footer';
 import { Card } from "../Components/Card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -156,6 +157,7 @@ export function Categories() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

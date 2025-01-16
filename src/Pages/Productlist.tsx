@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { Appbar } from "../Components/Appbar"
+import Footer from '../Components/Footer';
 import ProductCard from "../Components/ProductCard"
 import { useState } from "react";
 import { Button } from "../Components/Button";
@@ -120,6 +121,7 @@ export function ProductList() {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

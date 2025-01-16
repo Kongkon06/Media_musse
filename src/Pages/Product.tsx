@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { Star, ShoppingCart, Heart, Share2 } from 'lucide-react';
 //import { Appbar } from '../Components/Appbar';
+import Footer from '../Components/Footer';
 import { motion } from 'framer-motion';
 import { Home, Package, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
@@ -198,6 +199,7 @@ export const ProductPage = () => {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

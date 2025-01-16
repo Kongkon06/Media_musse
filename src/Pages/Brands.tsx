@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "../Components/Button";
+import Footer from '../Components/Footer';
 import { Home, Package, ShoppingCart, Store, Tag } from "lucide-react";
 
 export function Brands() {
@@ -144,6 +145,7 @@ export function Brands() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
