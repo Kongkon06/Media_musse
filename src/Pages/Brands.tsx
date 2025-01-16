@@ -134,7 +134,7 @@ export function Brands() {
                   <p className="text-gray-600 mb-4">{brand.description}</p>
                   <Button 
                     className="w-full bg-gradient-to-r from-deal-purple to-deal-orange hover:opacity-90 text-white"
-                    onClick={() => navigate(`/brands/${brand.id}`)}
+                    onClick={() => navigate(`/products/${brand.id}`)}
                   >
                     View Collection
                   </Button>

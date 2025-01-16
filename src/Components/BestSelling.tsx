@@ -1,7 +1,10 @@
 import { Button } from "./Button";
 import { motion } from "framer-motion";
+import { useRecoilState } from "recoil";
+import { userCart } from "@/States/Atom";
 
 export function BestSelling() {
+  const [cart,setCart] = useRecoilState(userCart);
   const bestSellers = [
     {
       id: 1,
@@ -73,6 +76,7 @@ export function BestSelling() {
                   </span>
                 </div>
                 <Button 
+                onClick={()=>{setCart(cart + 1)}}
                   className="w-full mt-4 bg-gradient-to-r from-deal-purple to-deal-orange hover:opacity-90 transition-opacity"
                 >
                   Add to Cart
