@@ -22,8 +22,6 @@ export const Sidebar = () => {
       >
         <Menu className="h-6 w-6" />
       </button>
-
-      {/* Overlay for mobile */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 transition-opacity md:hidden"
@@ -31,11 +29,9 @@ export const Sidebar = () => {
         />
       )}
 
-      {/* Sidebar */}
       <div className={`fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-64 transform overflow-hidden bg-white shadow-lg transition-transform duration-300 ease-in-out 
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:top-0 md:w-1/5 md:translate-x-0`}
       >
-        {/* Collapse button - Only visible on desktop */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="absolute -right-3 top-4 hidden rounded-full bg-white p-1 shadow-lg md:block"
