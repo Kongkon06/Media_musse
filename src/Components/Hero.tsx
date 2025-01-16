@@ -1,5 +1,5 @@
 // Hero.js
-import { Button } from "./Button";
+import { Button } from "../Components/ui/button";
 import { motion } from "framer-motion";
 
 export function Hero() {

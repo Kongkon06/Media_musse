@@ -18,24 +18,31 @@ const CountdownTimer = ({ endDate }: CountdownTimerProps) => {
 
       if (distance < 0) {
         clearInterval(timer);
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
-      setTimeLeft({
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
-      });
+      const hours = Math.floor(distance / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({ hours, minutes, seconds });
     }, 1000);
 
     return () => clearInterval(timer);
   }, [endDate]);
 
   return (
-    <div className="flex items-center gap-1 text-sm font-semibold text-deal-purple">
-      <span>{String(timeLeft.hours).padStart(2, "0")}:</span>
-      <span>{String(timeLeft.minutes).padStart(2, "0")}:</span>
-      <span>{String(timeLeft.seconds).padStart(2, "0")}</span>
+    <div className="flex items-center gap-1 text-sm font-medium">
+      <div className="bg-deal-discount/10 px-2 py-1 rounded">
+        {String(timeLeft.hours).padStart(2, "0")}h
+      </div>
+      <div className="bg-deal-discount/10 px-2 py-1 rounded">
+        {String(timeLeft.minutes).padStart(2, "0")}m
+      </div>
+      <div className="bg-deal-discount/10 px-2 py-1 rounded">
+        {String(timeLeft.seconds).padStart(2, "0")}s
+      </div>
     </div>
   );
 };

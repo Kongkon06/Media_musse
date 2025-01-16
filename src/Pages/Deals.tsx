@@ -37,15 +37,21 @@ const deals = [
 
 const Deals = () => {
   return (
-    <section className="py-12 px-4 max-w-7xl mx-auto">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-center mb-2">Hot Deals</h2>
-        <p className="text-gray-600 text-center">Limited time offers on premium instruments</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {deals.map((deal) => (
-          <DealCard key={deal.id} {...deal} />
-        ))}
+    <section className="py-16 px-4 bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-deal-heading mb-4 animate-float bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            Hot Deals
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Limited time offers on premium instruments. Don't miss out on these incredible savings!
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {deals.map((deal) => (
+            <DealCard key={deal.id} {...deal} />
+          ))}
+        </div>
       </div>
     </section>
   );
