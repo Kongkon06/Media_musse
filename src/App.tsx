@@ -9,6 +9,7 @@ import {ProductPage} from './Pages/Product'
 import { Brands } from './Pages/Brands'
 import { ProductList } from './Pages/Productlist'
 import { Cart } from './Pages/Cart'
+import ResponsiveBar from './Components/Responsivebar'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <Route path='/Products/:id' element={<ProductList/>}></Route>
       <Route path='/Brands' element={<Brands/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
+      <Route path='/test' element={<ResponsiveBar/>}></Route>
     </Routes>
     </BrowserRouter></RecoilRoot>
 }
