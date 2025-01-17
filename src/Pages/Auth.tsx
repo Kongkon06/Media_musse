@@ -10,7 +10,7 @@ export function Auth() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/public/sigin.jpg"
+          src="/sigin.jpg"
           alt="Background"
           className="h-full w-full object-cover"
         />
