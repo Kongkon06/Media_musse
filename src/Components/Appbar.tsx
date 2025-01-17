@@ -165,10 +165,20 @@ export const Appbar = () => {
           {/* Mobile Menu */}
           {isMobile ? (
             <div className="flex items-center gap-2 xs:gap-4">
+              <Input
+                    onKeyDown={(e:any)=>{
+                      if(e.key == "Enter"){
+                        navigate('/products/guitar')
+                      }
+                    }}
+                    type="search"
+                    placeholder="Search..."
+                    className="w-36 pl-4 bg-white/90 border-none rounded-lg xs:rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
+                  />
               <div className="relative">
                 <Search 
                   className="h-5 w-5 xs:h-6 xs:w-6 text-white cursor-pointer hover:text-yellow-300 transition-colors duration-300"
-                  onClick={() => navigate('/search')}
+                  onClick={() => navigate('/products/guitar')}
                 />
               </div>
               <DropdownMenu>
