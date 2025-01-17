@@ -82,7 +82,7 @@ export function Auth() {
         />
       </div>
 
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl backdrop-blur-sm">
+            <div className="w-96 max-w-md bg-white rounded-2xl shadow-xl backdrop-blur-sm">
                 <div className="p-6 sm:p-8">
                     {/* Auth Type Toggle */}
                     <div className="flex justify-center mb-8">
