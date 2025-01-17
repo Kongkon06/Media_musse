@@ -48,8 +48,8 @@ export const ProductPage = () => {
       <div className="fixed top-4 left-4 z-50 md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="bg-white/80 backdrop-blur-sm">
-              <Menu className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="bg-white w-10 h-10 rounded-full backdrop-blur-sm shadow-md">
+              <Menu className="h-5 w-5 text-deal-purple" />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-64 pt-20 px-6">

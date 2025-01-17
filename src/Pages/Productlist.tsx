@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Appbar } from "../Components/Appbar"
+//import { Appbar } from "../Components/Appbar"
 import Footer from '../Components/Footer';
 import ProductCard from "../Components/ProductCard"
 import { useState } from "react";
@@ -107,7 +107,7 @@ export function ProductList() {
     );
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-        <Appbar />
+       { /*<Appbar />*/}
         <div className="flex flex-col lg:flex-row">
           {/* Mobile Filter Button */}
           <div className="lg:hidden fixed bottom-4 right-4 z-50">

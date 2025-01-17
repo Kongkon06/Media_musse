@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Appbar } from "../Components/Appbar";
+//import { Appbar } from "../Components/Appbar";
 import Footer from '../Components/Footer';
 import { Card } from "../Components/Card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Home, Menu, Package, ShoppingCart, Store, Tag,  } from "lucide-react";
+import { Button } from '../Components/Button';
+import { Sheet, SheetContent, SheetTrigger } from "../Components/ui/sheet";
 //mport ResponsiveBar from "@/Components/Responsivebar";
 
 export function Categories() {
+
   type CategoryItem = { name: string; image?: string };
   type Categories = {
     Instruments: CategoryItem[];
@@ -66,14 +69,49 @@ export function Categories() {
     show: { opacity: 1, y: 0 }
   };
 
+  const sidebarItems = [
+    { icon: Home, label: "Home", route: "/" },
+    { icon: Package, label: "Categories", route: "/categories" },
+    { icon: Store, label: "Brands", route: "/brands" },
+    { icon: Tag, label: "Deals", route: "/deals" },
+    { icon: ShoppingCart, label: "Cart", route: "/cart" },
+  ];
   type CategoryKeys = keyof typeof categories;
   const [state, setState] = useState<CategoryKeys>("Instruments");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+ 
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
-      <Appbar />
+     { /*<Appbar />*/}
+     <div className="lg:hidden fixed top-4 left-4 z-50 md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="bg-white w-10 h-10 rounded-full backdrop-blur-sm shadow-md">
+            
+              <Menu className="h-5 w-5 text-deal-purple" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-64 pt-20 px-6">
+            <div className="flex flex-col space-y-2">
+              {sidebarItems.map((item) => (
+                <Button
+                  key={item.label}
+                  variant="ghost"
+                  className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+                  onClick={() => navigate(item.route)}
+                >
+                  <item.icon className="h-5 w-5 " />
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
       <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] pt-16">
         {/* Mobile Category Selector */}
         <div className="lg:hidden px-4 pt-4">
