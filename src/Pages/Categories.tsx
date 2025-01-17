@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Appbar } from "../Components/Appbar";
+import Footer from '../Components/Footer';
 import { Card } from "../Components/Card";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Menu, X } from "lucide-react";
-import ResponsiveBar from "@/Components/Responsivebar";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+//mport ResponsiveBar from "@/Components/Responsivebar";
 
 export function Categories() {
   type CategoryItem = { name: string; image?: string };
@@ -66,71 +68,64 @@ export function Categories() {
 
   type CategoryKeys = keyof typeof categories;
   const [state, setState] = useState<CategoryKeys>("Instruments");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
-      <ResponsiveBar/>
-      
-      {/* Mobile Menu Button */}
-      <div className="fixed top-20 left-4 z-50 lg:hidden">
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className={`p-2 bg-white rounded-lg shadow-lg ${isSidebarOpen? "hidden" : "block"}`}
-        >
-          {isSidebarOpen ? <X className="hidden h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)] pt-16">
-        {/* Sidebar Navigation - Mobile Overlay */}
-        <AnimatePresence>
-          {isSidebarOpen && (
+      <Appbar />
+      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] pt-16">
+        {/* Mobile Category Selector */}
+        <div className="lg:hidden px-4 pt-4">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="w-full px-4 py-3 bg-white rounded-lg shadow-md flex items-center justify-between"
+          >
+            <span className="text-lg font-medium">
+              {state.replace(/_/g, " ")}
+            </span>
+            <ChevronRight
+              className={`h-4 w-4 transition-transform duration-300 ${
+                isMobileMenuOpen ? "rotate-90" : ""
+              }`}
+            />
+          </button>
+          
+          {/* Mobile Category Menu */}
+          {isMobileMenuOpen && (
             <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="fixed inset-0 z-40 md:hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute z-50 left-0 right-0 mt-2 mx-4 bg-white rounded-lg shadow-xl"
             >
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsSidebarOpen(false)} />
-              <div className="absolute left-0 top-0 bottom-0 w-64 bg-white/80 backdrop-blur-md shadow-lg">
-                <div className="flex flex-col gap-2 p-6 pt-20">
-                  {Object.keys(categories).map((category) => (
-                    <motion.div
-                      key={category}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <button
-                        onClick={() => {
-                          setState(category as CategoryKeys);
-                          setIsSidebarOpen(false);
-                        }}
-                        className={`w-full text-left px-4 py-3 rounded-lg flex items-center justify-between group transition-all duration-300 ${
-                          state === category
-                            ? "bg-gradient-to-r from-deal-purple to-deal-orange text-white font-medium"
-                            : "hover:bg-gray-100"
-                        }`}
-                      >
-                        <span className="text-lg">{category.replace(/_/g, " ")}</span>
-                        <ChevronRight
-                          className={`h-4 w-4 transition-transform duration-300 ${
-                            state === category ? "rotate-90" : "group-hover:translate-x-1"
-                          }`}
-                        />
-                      </button>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+              {Object.keys(categories).map((category) => (
+                <motion.div
+                  key={category}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <button
+                    onClick={() => {
+                      setState(category as CategoryKeys);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-3 ${
+                      state === category
+                        ? "bg-gradient-to-r from-deal-purple to-deal-orange text-white font-medium"
+                        : "hover:bg-gray-100"
+                    }`}
+                  >
+                    <span className="text-base">
+                      {category.replace(/_/g, " ")}
+                    </span>
+                  </button>
+                </motion.div>
+              ))}
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
 
         {/* Sidebar Navigation - Desktop */}
-        <div className="hidden lg:block w-1/5 bg-white/80 backdrop-blur-md shadow-lg">
+        <div className="hidden lg:block lg:w-1/5 bg-white/80 backdrop-blur-md shadow-lg">
           <div className="flex flex-col gap-2 p-6 pt-20">
             {Object.keys(categories).map((category) => (
               <motion.div
@@ -159,16 +154,16 @@ export function Categories() {
         </div>
 
         {/* Main Content */}
-        <div className="w-full md:w-4/5 px-4 md:px-8 pt-20">
+        <div className="w-full lg:w-4/5 px-4 lg:px-8 pt-8 lg:pt-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
               {state.replace(/_/g, " ")}
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 text-sm lg:text-base">
               Explore our collection of {state.toLowerCase().replace(/_/g, " ")}
             </p>
           </motion.div>
@@ -177,7 +172,7 @@ export function Categories() {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
           >
             {categories[state].map((categoryItem, index) => (
               <motion.div 
@@ -186,7 +181,7 @@ export function Categories() {
               >
                 <Card
                   onClick={() => navigate(`/products/${categoryItem.name}`)}
-                  className="group relative overflow-hidden rounded-xl shadow-lg h-48 md:h-64 transition-all duration-300 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-xl shadow-lg h-48 sm:h-56 lg:h-64 transition-all duration-300 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
                   {categoryItem.image && (
@@ -197,8 +192,8 @@ export function Categories() {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative h-full flex flex-col justify-end p-4 md:p-6">
-                    <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+                  <div className="relative h-full flex flex-col justify-end p-4 lg:p-6">
+                    <h3 className="text-lg lg:text-xl font-bold text-white mb-2">
                       {categoryItem.name}
                     </h3>
                     <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
@@ -214,6 +209,7 @@ export function Categories() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
