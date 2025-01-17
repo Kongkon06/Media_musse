@@ -16,6 +16,7 @@ export const Appbar = () => {
   const [expanded, setExpanded] = useState(false);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const isMobile = useMobile();
+
   const handleMouseEnter = useCallback(() => {
     if (timeoutId) {
       clearTimeout(timeoutId);
@@ -23,12 +24,14 @@ export const Appbar = () => {
     }
     setExpanded(true);
   }, [timeoutId]);
+
   const handleMouseLeave = useCallback(() => {
     const id = setTimeout(() => {
       setExpanded(false);
     }, 4000);
     setTimeoutId(id);
   }, []);
+
   useEffect(() => {
     return () => {
       if (timeoutId) {
@@ -36,6 +39,7 @@ export const Appbar = () => {
       }
     };
   }, [timeoutId]);
+
   return (
     <div
       className="fixed top-0 left-0 right-0 z-50 flex justify-center bg-transparent"
@@ -103,8 +107,8 @@ export const Appbar = () => {
         }
       `}</style>
       <nav
-        className={`flex items-center font-dm-sans my-4 h-16 mx-4 md:mx-auto p-4 rounded-2xl nav-bar ${
-          isMobile ? "nav-bar-expanded w-[95%]" : expanded ? "nav-bar-expanded" : "nav-bar-collapsed"
+        className={`flex items-center font-dm-sans my-2 xs:my-4 h-12 xs:h-14 sm:h-16 mx-2 xs:mx-4 md:mx-auto p-2 xs:p-4 rounded-xl xs:rounded-2xl nav-bar ${
+          isMobile ? "nav-bar-expanded w-[92%] xs:w-[95%]" : expanded ? "nav-bar-expanded" : "nav-bar-collapsed"
         }`}
       >
         <div
@@ -120,9 +124,9 @@ export const Appbar = () => {
               isMobile ? "relative" : ""
             }`}
           >
-            <svg
+            {/*<svg
               width="501"
-              className="h-6 md:h-8 hover:scale-105 transition-transform duration-300"
+              className="h-5 xs:h-6 md:h-8 hover:scale-105 transition-transform duration-300"
               viewBox="0 0 501 111"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -155,14 +159,15 @@ export const Appbar = () => {
                 fill="currentColor"
                 className="text-white"
               />
-            </svg>
+            </svg>*/}
           </div>
+
           {/* Mobile Menu */}
           {isMobile ? (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 xs:gap-4">
               <div className="relative">
                 <Search 
-                  className="h-6 w-6 text-white cursor-pointer hover:text-yellow-300 transition-colors duration-300"
+                  className="h-5 w-5 xs:h-6 xs:w-6 text-white cursor-pointer hover:text-yellow-300 transition-colors duration-300"
                   onClick={() => navigate('/search')}
                 />
               </div>
@@ -170,12 +175,12 @@ export const Appbar = () => {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="p-0 h-10 w-10 text-white hover:text-yellow-300 hover:bg-transparent"
+                    className="p-0 h-8 w-8 xs:h-10 xs:w-10 text-white hover:text-yellow-300 hover:bg-transparent"
                   >
-                    <Menu className="h-6 w-6" />
+                    <Menu className="h-5 w-5 xs:h-6 xs:w-6" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48 bg-white/95 backdrop-blur-lg">
+                <DropdownMenuContent align="end" className="w-36 xs:w-48 bg-white/95 backdrop-blur-lg">
                   <DropdownMenuItem onClick={() => navigate("/brands")}>
                     Brands
                   </DropdownMenuItem>
@@ -198,42 +203,42 @@ export const Appbar = () => {
             <>
               {/* Desktop Navigation Links */}
               <div
-                className={`md:flex items-center space-x-8 ${
+                className={`md:flex items-center space-x-6 lg:space-x-8 ${
                   expanded ? "menu-visible" : "menu-hidden"
                 }`}
               >
                 <Button
                   variant="ghost"
                   onClick={() => navigate("/brands")}
-                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-base font-medium"
+                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base font-medium"
                 >
                   Brands
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={() => navigate("/categories")}
-                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-base font-medium"
+                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base font-medium"
                 >
                   Categories
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={() => navigate("/agent")}
-                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-base font-medium"
+                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base font-medium"
                 >
                   Offline Buy
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={() => navigate("/cart")}
-                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-base font-medium"
+                  className="nav-button text-white hover:text-yellow-300 hover:bg-transparent transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base font-medium"
                 >
                   Cart
                 </Button>
               </div>
               {/* Search Bar */}
               <div
-                className={`flex grow mx-8 ${
+                className={`flex grow mx-4 lg:mx-8 ${
                   expanded ? "menu-visible" : "menu-hidden"
                 }`}
               >
@@ -247,7 +252,7 @@ export const Appbar = () => {
                     }}
                     type="search"
                     placeholder="Search musical instruments..."
-                    className="w-full pl-10 bg-white/90 border-none rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
+                    className="w-60 pl-10 bg-white/90 border-none rounded-lg xs:rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -255,7 +260,7 @@ export const Appbar = () => {
               <div className={`${expanded ? "menu-visible" : "menu-hidden"}`}>
                 <Button
                   onClick={() => navigate("/auth")}
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base rounded-lg xs:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
                 >
                   Login
                 </Button>
@@ -267,3 +272,5 @@ export const Appbar = () => {
     </div>
   );
 };
+
+export default Appbar;
