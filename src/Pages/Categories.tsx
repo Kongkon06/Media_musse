@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import { Appbar } from "../Components/Appbar"
 import Footer from '../Components/Footer';
 import { Card } from "../Components/Card";
 import { useNavigate } from "react-router-dom";
@@ -82,6 +83,7 @@ export function Categories() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
+     {/* <Appbar/>*/}
       <div className="lg:hidden fixed top-4 left-4 z-50 md:hidden">
         <Sheet>
           <SheetTrigger asChild>
@@ -159,7 +161,7 @@ export function Categories() {
 
         {/* Sidebar Navigation - Desktop */}
         <div className="hidden lg:block lg:w-1/5 bg-white/80 backdrop-blur-md shadow-lg h-screen sticky top-0">
-          <div className="flex flex-col gap-2 p-6 pt-20 overflow-y-auto max-h-screen">
+          <div className="flex flex-col gap-2 p-6 pt-20 overflow-y-auto max-h-screen mt-2">
             {Object.keys(categories).map((category) => (
               <motion.div
                 key={category}
@@ -193,7 +195,7 @@ export function Categories() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-6 sm:mb-8"
           >
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            <h1 className="lg:mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
               {state.replace(/_/g, " ")}
             </h1>
             <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">
