@@ -28,7 +28,7 @@ export const Appbar = () => {
   const handleMouseLeave = useCallback(() => {
     const id = setTimeout(() => {
       setExpanded(false);
-    }, 4000);
+    }, 10000);
     setTimeoutId(id);
   }, []);
 
@@ -112,7 +112,7 @@ export const Appbar = () => {
         }`}
       >
         <div
-          className={` relative flex items-center ${
+          className={`lg:container relative flex items-center ${
             isMobile ? "justify-between" : expanded ? "justify-between" : "justify-center"
           }`}
         >
@@ -121,7 +121,7 @@ export const Appbar = () => {
             role="button"
             onClick={() => navigate("/")}
             className={`logo-container ${expanded && !isMobile ? "relative" : "absolute"} ${
-              isMobile ? "relative h-8 flex items-center" : ""
+              isMobile ? "relative h-8 flex items-center mx-4" : ""
             }`}
           >
             <svg
@@ -163,7 +163,7 @@ export const Appbar = () => {
 
           {/* Mobile Menu */}
           {isMobile ? (
-            <div className=" ml-8 flex items-center gap-2 xs:gap-2">
+            <div className="flex items-center gap-2 xs:gap-4">
               <Input
                     onKeyDown={(e:any)=>{
                       if(e.key == "Enter"){
@@ -213,7 +213,7 @@ export const Appbar = () => {
               {/* Desktop Navigation Links */}
               <div
                 className={`md:flex items-center space-x-6 lg:space-x-8 ${
-                  expanded ? "menu-visible" : "menu-hidden"
+                  expanded ? "menu-visible ml-20" : "menu-hidden"
                 }`}
               >
                 <Button
@@ -261,7 +261,7 @@ export const Appbar = () => {
                     }}
                     type="search"
                     placeholder="Search musical instruments..."
-                    className="w-60 pl-10 bg-white/90 border-none rounded-lg xs:rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
+                    className="w-full pl-10 bg-white/90 border-none rounded-lg xs:rounded-xl focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
                   />
                 </div>
               </div>
