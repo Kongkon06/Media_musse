@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { Star, ShoppingCart, Heart, Share2 } from 'lucide-react';
+import { Star, ShoppingCart, Heart, Share2, Menu } from 'lucide-react';
 //import { Appbar } from '../Components/Appbar';
 import Footer from '../Components/Footer';
 import { motion } from 'framer-motion';
@@ -9,10 +9,13 @@ import { Button } from '../Components/Button';
 import { Card } from '../Components/Card';
 import { useRecoilState } from "recoil";
 import { userCart } from "@/States/Atom";
+import { Sheet, SheetContent, SheetTrigger } from "../Components/ui/sheet";
 export const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+ // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
   const product = {
     name: "Fender Stratocaster",
     price: 1499.99,
@@ -38,18 +41,42 @@ export const ProductPage = () => {
     { icon: ShoppingCart, label: "Cart", route: "/cart" },
   ];
   const navigate = useNavigate();
-  const [cart,setCart] = useRecoilState(userCart)
+  const [cart, setCart] = useRecoilState(userCart);
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
-     { /*<Appbar />*/}
+      {/* Mobile Menu Button */}
+      <div className="fixed top-4 left-4 z-50 md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="bg-white/80 backdrop-blur-sm">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-64 pt-20 px-6">
+            <div className="flex flex-col space-y-2">
+              {sidebarItems.map((item) => (
+                <Button
+                  key={item.label}
+                  variant="ghost"
+                  className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+                  onClick={() => navigate(item.route)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
       <div className="flex flex-1">
-        {/* Sidebar */}
+        {/* Desktop Sidebar */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="w-64 min-h-[calc(100vh-4rem)] pt-20 px-6 flex-col  bg-white backdrop-blur-sm hidden md:flex"
+          className="w-64 min-h-[calc(100vh-4rem)] pt-20 px-6 flex-col bg-white backdrop-blur-sm hidden md:flex"
         >
-         {sidebarItems.map((item) => (
+          {sidebarItems.map((item) => (
             <Button
               key={item.label}
               variant="ghost"
@@ -68,7 +95,7 @@ export const ProductPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-7xl mx-auto"
           >
-            <Card className="p-6 bg-white/80 backdrop-blur-sm">
+            <Card className="p-4 md:p-6 bg-white/80 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Product Images */}
                 <div className="space-y-4">
@@ -82,7 +109,7 @@ export const ProductPage = () => {
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2 md:gap-3">
                     {product.images.map((image, index) => (
                       <motion.button
                         key={index}
@@ -98,9 +125,9 @@ export const ProductPage = () => {
                   </div>
                 </div>
                 {/* Product Info */}
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+                    <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
                       {product.name}
                     </h1>
                     <div className="flex items-center mt-3 space-x-4">
@@ -108,7 +135,7 @@ export const ProductPage = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-5 h-5 ${
+                            className={`w-4 md:w-5 h-4 md:h-5 ${
                               i < Math.floor(product.rating)
                                 ? 'text-yellow-400 fill-current'
                                 : 'text-gray-300'
@@ -116,14 +143,14 @@ export const ProductPage = () => {
                           />
                         ))}
                       </div>
-                      <span className="text-sm text-gray-600">{product.reviews} reviews</span>
+                      <span className="text-xs md:text-sm text-gray-600">{product.reviews} reviews</span>
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-deal-purple">Rs {product.price}</div>
-                  <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                  <div className="text-2xl md:text-3xl font-bold text-deal-purple">Rs {product.price}</div>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">{product.description}</p>
                   {/* Color Selector */}
                   <div>
-                    <h3 className="font-medium mb-3 text-gray-800">Color</h3>
+                    <h3 className="font-medium mb-2 md:mb-3 text-gray-800">Color</h3>
                     <div className="flex flex-wrap gap-2">
                       {product.sizes.map((size) => (
                         <motion.button
@@ -131,7 +158,7 @@ export const ProductPage = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setSelectedSize(size)}
-                          className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                          className={`px-3 md:px-4 py-2 text-sm md:text-base rounded-lg transition-all duration-300 ${
                             selectedSize === size
                               ? 'bg-gradient-to-r from-deal-purple to-deal-orange text-white shadow-lg'
                               : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
@@ -144,53 +171,53 @@ export const ProductPage = () => {
                   </div>
                   {/* Quantity Selector */}
                   <div>
-                    <h3 className="font-medium mb-3 text-gray-800">Quantity</h3>
+                    <h3 className="font-medium mb-2 md:mb-3 text-gray-800">Quantity</h3>
                     <div className="flex items-center space-x-3">
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-lg font-medium"
+                        className="w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-lg font-medium"
                       >
                         -
                       </motion.button>
-                      <span className="w-16 text-center py-2 bg-gray-50 rounded-lg text-lg font-medium">
+                      <span className="w-12 md:w-16 text-center py-1 md:py-2 bg-gray-50 rounded-lg text-base md:text-lg font-medium">
                         {quantity}
                       </span>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setQuantity(quantity + 1)}
-                        className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-lg font-medium"
+                        className="w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-lg font-medium"
                       >
                         +
                       </motion.button>
                     </div>
                   </div>
                   {/* Action Buttons */}
-                  <div className="flex space-x-4 pt-4">
+                  <div className="flex space-x-2 md:space-x-4 pt-4">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleAddToCart}
-                      className="flex-1 bg-gradient-to-r from-deal-purple to-deal-orange text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                      className="flex-1 bg-gradient-to-r from-deal-purple to-deal-orange text-white px-4 md:px-6 py-2 md:py-3 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 text-sm md:text-base"
                     >
-                      <ShoppingCart className="w-5 h-5" />
+                      <ShoppingCart className="w-4 md:w-5 h-4 md:h-5" />
                       <span>Add to Cart</span>
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
+                      className="p-2 md:p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
                     >
-                      <Heart className="w-5 h-5 text-deal-purple" />
+                      <Heart className="w-4 md:w-5 h-4 md:h-5 text-deal-purple" />
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
+                      className="p-2 md:p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
                     >
-                      <Share2 className="w-5 h-5 text-deal-orange" />
+                      <Share2 className="w-4 md:w-5 h-4 md:h-5 text-deal-orange" />
                     </motion.button>
                   </div>
                 </div>
