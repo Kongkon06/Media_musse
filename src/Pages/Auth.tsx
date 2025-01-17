@@ -85,33 +85,6 @@ export function Auth() {
             <div className="w-96 max-w-md bg-white rounded-2xl shadow-xl backdrop-blur-sm">
                 <div className="p-6 sm:p-8">
                     {/* Auth Type Toggle */}
-                    <div className="flex justify-center mb-8">
-                        <div className="bg-slate-100 p-1 rounded-lg">
-                            <button
-                                type="button"
-                                onClick={() => setIsSignIn(true)}
-                                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                                    isSignIn 
-                                    ? 'bg-white text-slate-900 shadow-sm' 
-                                    : 'text-slate-600 hover:text-slate-900'
-                                }`}
-                            >
-                                Sign Up
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setIsSignIn(false)}
-                                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                                    !isSignIn 
-                                    ? 'bg-white text-slate-900 shadow-sm' 
-                                    : 'text-slate-600 hover:text-slate-900'
-                                }`}
-                            >
-                                Log In
-                            </button>
-                        </div>
-                    </div>
-
                     <h2 className="text-2xl font-semibold text-center mb-8">
                         {isSignIn ? 'Create your account' : 'Welcome back'}
                     </h2>
@@ -226,7 +199,7 @@ export function Auth() {
                                         onClick={() => setIsSignIn(false)}
                                         className="text-blue-600 hover:text-blue-700 font-medium"
                                     >
-                                        Sign in
+                                        Log in
                                     </button>
                                 </p>
                             ) : (

@@ -60,7 +60,7 @@ export function Cart() {
         <div className="min-h-screen flex flex-col bg-slate-50">
             <Appbar />
 
-            <div className="flex flex-col lg:flex-row gap-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full mt-4 sm:mt-8 pb-8">
+            <div className="flex flex-col justify-center lg:flex-row gap-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full mt-4 sm:mt-8 pb-8">
                 {/* Main Content */}
                 <div className="w-full lg:w-2/3 flex flex-col gap-4 mt-20">
                     <div className="p-4 bg-white rounded-lg shadow-sm">
