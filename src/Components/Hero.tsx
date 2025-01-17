@@ -28,7 +28,7 @@ export function Hero() {
                             </Button>
                             <Button 
                                 variant="outline" 
-                                className="text-white border-white hover:bg-white/10 text-sm sm:text-base h-9 sm:h-11 px-4 sm:px-8"
+                                className="text-black border-white hover:bg-white/10 text-sm sm:text-base h-9 sm:h-11 px-4 sm:px-8"
                             >
                                 Watch Demo
                             </Button>
