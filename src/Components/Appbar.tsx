@@ -112,7 +112,7 @@ export const Appbar = () => {
         }`}
       >
         <div
-          className={`container relative flex items-center ${
+          className={` relative flex items-center ${
             isMobile ? "justify-between" : expanded ? "justify-between" : "justify-center"
           }`}
         >
@@ -121,11 +121,10 @@ export const Appbar = () => {
             role="button"
             onClick={() => navigate("/")}
             className={`logo-container ${expanded && !isMobile ? "relative" : "absolute"} ${
-              isMobile ? "relative" : ""
+              isMobile ? "relative h-8 flex items-center" : ""
             }`}
           >
-            {/*<svg
-              width="501"
+            <svg
               className="h-5 xs:h-6 md:h-8 hover:scale-105 transition-transform duration-300"
               viewBox="0 0 501 111"
               fill="none"
@@ -159,12 +158,12 @@ export const Appbar = () => {
                 fill="currentColor"
                 className="text-white"
               />
-            </svg>*/}
+            </svg>
           </div>
 
           {/* Mobile Menu */}
           {isMobile ? (
-            <div className="flex items-center gap-2 xs:gap-4">
+            <div className=" ml-8 flex items-center gap-2 xs:gap-2">
               <Input
                     onKeyDown={(e:any)=>{
                       if(e.key == "Enter"){
