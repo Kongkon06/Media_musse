@@ -101,12 +101,12 @@ export function Brands() {
           variant="ghost"
           size="icon"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md"
+          className="w-10 h-10 rounded-full bg-white shadow-md"
         >
           {isSidebarOpen ? (
-            <X className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
+            <X className="h-5 w-5 text-deal-purple" />
           ) : (
-            <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
+            <Menu className="h-5 w-5 text-deal-purple" />
           )}
         </Button>
       </div>
@@ -152,7 +152,7 @@ export function Brands() {
             transition={{ duration: 0.6 }}
             className="mb-4 sm:mb-6 lg:mb-8"
           >
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            <h1 className="mt-2 text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
               Featured Brands
             </h1>
             <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">

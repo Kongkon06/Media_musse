@@ -85,8 +85,8 @@ export function Categories() {
       <div className="lg:hidden fixed top-4 left-4 z-50 md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="bg-white w-8 h-8 sm:w-10 sm:h-10 rounded-full backdrop-blur-sm shadow-md">
-              <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
+            <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="bg-white w-10 h-10 rounded-full backdrop-blur-sm shadow-md">
+              <Menu className="h-5 w-5 text-deal-purple" />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-64 pt-16 px-4 sm:pt-20 sm:px-6">
@@ -109,7 +109,7 @@ export function Categories() {
 
       <div className="flex flex-col lg:flex-row min-h-screen">
         {/* Mobile Category Selector */}
-        <div className="lg:hidden px-3 sm:px-4 pt-16 sm:pt-20">
+        <div className="lg:hidden px-3 sm:px-4 pt-16 sm:pt-20 mt-2">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white rounded-lg shadow-md flex items-center justify-between"

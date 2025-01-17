@@ -135,7 +135,7 @@ export function ProductList() {
           </div>
           {/* Product Grid */}
           <div className="w-full lg:w-4/5 pt-20 p-4 sm:p-8">
-            <div className="mb-6">
+            <div className="mb-6 lg:mt-12">
               <h1 className="text-2xl font-bold text-gray-900">Featured Products</h1>
               <p className="text-gray-600">Discover our collection of premium instruments</p>
             </div>

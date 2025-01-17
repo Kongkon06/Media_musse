@@ -58,10 +58,10 @@ export const ProductPage = () => {
                 <Button
                   key={item.label}
                   variant="ghost"
-                  className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+                  className="w-full justify-start gap-2 mb-1 sm:mb-2 text-base sm:text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
                   onClick={() => navigate(item.route)}
                 >
-                  <item.icon className="h-5 w-5" />
+                  <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   {item.label}
                 </Button>
               ))}
