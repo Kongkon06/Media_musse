@@ -86,7 +86,7 @@ export function Brands() {
     { icon: ShoppingCart, label: "Cart", route: "/cart" },
   ];
 
-  const handleNavigate = (route : any) => {
+  const handleNavigate = (route: any) => {
     navigate(route);
     if (!isDesktop) {
       setIsSidebarOpen(false);
@@ -96,17 +96,17 @@ export function Brands() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Mobile Menu Button - Only show below lg breakpoint */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
+      <div className="lg:hidden fixed top-3 sm:top-4 left-3 sm:left-4 z-50">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-10 h-10 rounded-full bg-white shadow-md"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md"
         >
           {isSidebarOpen ? (
-            <X className="h-5 w-5 text-deal-purple" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
           ) : (
-            <Menu className="h-5 w-5 text-deal-purple" />
+            <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
           )}
         </Button>
       </div>
@@ -120,17 +120,17 @@ export function Brands() {
             opacity: (!isDesktop && !isSidebarOpen) ? 0 : 1
           }}
           transition={{ duration: 0.3 }}
-          className={`fixed lg:relative z-40 w-64 min-h-screen bg-white shadow-md pt-20 px-4
+          className={`fixed lg:relative z-40 w-56 sm:w-64 min-h-screen bg-white shadow-md pt-16 sm:pt-20 px-3 sm:px-4
             ${!isDesktop && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'}`}
         >
           {sidebarItems.map((item) => (
             <Button
               key={item.label}
               variant="ghost"
-              className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+              className="w-full justify-start gap-2 mb-1 sm:mb-2 text-base sm:text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
               onClick={() => handleNavigate(item.route)}
             >
-              <item.icon className="h-5 w-5" />
+              <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
               {item.label}
             </Button>
           ))}
@@ -145,22 +145,22 @@ export function Brands() {
         )}
 
         {/* Main Content */}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8 pt-16 lg:pt-8 lg:ml-0">
+        <div className="flex-1 p-3 sm:p-6 lg:p-8 pt-14 sm:pt-16 lg:pt-8 lg:ml-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 lg:mb-8"
+            className="mb-4 sm:mb-6 lg:mb-8"
           >
-            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
               Featured Brands
             </h1>
-            <p className="text-gray-600 mt-2 text-sm sm:text-base">
+            <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">
               Discover premium musical instruments from world-renowned manufacturers
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.id}
@@ -176,19 +176,19 @@ export function Brands() {
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg sm:text-xl font-bold">{brand.name}</h3>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm">
+                  <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 text-white">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold">{brand.name}</h3>
+                    <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
                       <span>⭐ {brand.rating}</span>
                       <span>•</span>
                       <span>{brand.products} Products</span>
                     </div>
                   </div>
                 </div>
-                <div className="p-4">
-                  <p className="text-gray-600 mb-4 text-sm sm:text-base">{brand.description}</p>
+                <div className="p-3 sm:p-4">
+                  <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm lg:text-base">{brand.description}</p>
                   <Button 
-                    className="w-full bg-gradient-to-r from-deal-purple to-deal-orange hover:opacity-90 text-white"
+                    className="w-full bg-gradient-to-r from-deal-purple to-deal-orange hover:opacity-90 text-white text-sm sm:text-base"
                     onClick={() => navigate(`/products/${brand.id}`)}
                   >
                     View Collection

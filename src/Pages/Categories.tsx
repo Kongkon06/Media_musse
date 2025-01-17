@@ -1,16 +1,13 @@
 import { useState } from "react";
-//import { Appbar } from "../Components/Appbar";
 import Footer from '../Components/Footer';
 import { Card } from "../Components/Card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronRight, Home, Menu, Package, ShoppingCart, Store, Tag,  } from "lucide-react";
+import { ChevronRight, Home, Menu, Package, ShoppingCart, Store, Tag } from "lucide-react";
 import { Button } from '../Components/Button';
 import { Sheet, SheetContent, SheetTrigger } from "../Components/ui/sheet";
-//mport ResponsiveBar from "@/Components/Responsivebar";
 
 export function Categories() {
-
   type CategoryItem = { name: string; image?: string };
   type Categories = {
     Instruments: CategoryItem[];
@@ -76,35 +73,32 @@ export function Categories() {
     { icon: Tag, label: "Deals", route: "/deals" },
     { icon: ShoppingCart, label: "Cart", route: "/cart" },
   ];
+  
   type CategoryKeys = keyof typeof categories;
   const [state, setState] = useState<CategoryKeys>("Instruments");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
- 
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
-     { /*<Appbar />*/}
-     <div className="lg:hidden fixed top-4 left-4 z-50 md:hidden">
+      <div className="lg:hidden fixed top-4 left-4 z-50 md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="bg-white w-10 h-10 rounded-full backdrop-blur-sm shadow-md">
-            
-              <Menu className="h-5 w-5 text-deal-purple" />
+            <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="bg-white w-8 h-8 sm:w-10 sm:h-10 rounded-full backdrop-blur-sm shadow-md">
+              <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-deal-purple" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-64 pt-20 px-6">
-            <div className="flex flex-col space-y-2">
+          <SheetContent side="left" className="w-64 pt-16 px-4 sm:pt-20 sm:px-6">
+            <div className="flex flex-col space-y-1 sm:space-y-2">
               {sidebarItems.map((item) => (
                 <Button
                   key={item.label}
                   variant="ghost"
-                  className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
+                  className="w-full justify-start gap-2 mb-1 sm:mb-2 text-base sm:text-lg font-medium text-gray-700 hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
                   onClick={() => navigate(item.route)}
                 >
-                  <item.icon className="h-5 w-5 " />
+                  <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   {item.label}
                 </Button>
               ))}
@@ -112,18 +106,19 @@ export function Categories() {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] pt-16">
+
+      <div className="flex flex-col lg:flex-row min-h-screen">
         {/* Mobile Category Selector */}
-        <div className="lg:hidden px-4 pt-4">
+        <div className="lg:hidden px-3 sm:px-4 pt-16 sm:pt-20">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-full px-4 py-3 bg-white rounded-lg shadow-md flex items-center justify-between"
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white rounded-lg shadow-md flex items-center justify-between"
           >
-            <span className="text-lg font-medium">
+            <span className="text-base sm:text-lg font-medium">
               {state.replace(/_/g, " ")}
             </span>
             <ChevronRight
-              className={`h-4 w-4 transition-transform duration-300 ${
+              className={`h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-300 ${
                 isMobileMenuOpen ? "rotate-90" : ""
               }`}
             />
@@ -134,7 +129,7 @@ export function Categories() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute z-50 left-0 right-0 mt-2 mx-4 bg-white rounded-lg shadow-xl"
+              className="absolute z-40 left-0 right-0 mt-1 sm:mt-2 mx-3 sm:mx-4 bg-white rounded-lg shadow-xl"
             >
               {Object.keys(categories).map((category) => (
                 <motion.div
@@ -146,13 +141,13 @@ export function Categories() {
                       setState(category as CategoryKeys);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 ${
+                    className={`w-full text-left px-3 sm:px-4 py-2 sm:py-3 ${
                       state === category
                         ? "bg-gradient-to-r from-deal-purple to-deal-orange text-white font-medium"
                         : "hover:bg-gray-100"
                     }`}
                   >
-                    <span className="text-base">
+                    <span className="text-sm sm:text-base">
                       {category.replace(/_/g, " ")}
                     </span>
                   </button>
@@ -163,8 +158,8 @@ export function Categories() {
         </div>
 
         {/* Sidebar Navigation - Desktop */}
-        <div className="hidden lg:block lg:w-1/5 bg-white/80 backdrop-blur-md shadow-lg">
-          <div className="flex flex-col gap-2 p-6 pt-20">
+        <div className="hidden lg:block lg:w-1/5 bg-white/80 backdrop-blur-md shadow-lg h-screen sticky top-0">
+          <div className="flex flex-col gap-2 p-6 pt-20 overflow-y-auto max-h-screen">
             {Object.keys(categories).map((category) => (
               <motion.div
                 key={category}
@@ -192,16 +187,16 @@ export function Categories() {
         </div>
 
         {/* Main Content */}
-        <div className="w-full lg:w-4/5 px-4 lg:px-8 pt-8 lg:pt-20">
+        <div className="w-full lg:w-4/5 px-3 sm:px-4 lg:px-8 pt-6 sm:pt-8 lg:pt-20 pb-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
               {state.replace(/_/g, " ")}
             </h1>
-            <p className="text-gray-600 mt-2 text-sm lg:text-base">
+            <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">
               Explore our collection of {state.toLowerCase().replace(/_/g, " ")}
             </p>
           </motion.div>
@@ -210,7 +205,7 @@ export function Categories() {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"
           >
             {categories[state].map((categoryItem, index) => (
               <motion.div 
@@ -219,7 +214,7 @@ export function Categories() {
               >
                 <Card
                   onClick={() => navigate(`/products/${categoryItem.name}`)}
-                  className="group relative overflow-hidden rounded-xl shadow-lg h-48 sm:h-56 lg:h-64 transition-all duration-300 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-xl shadow-lg h-40 sm:h-48 lg:h-64 transition-all duration-300 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
                   {categoryItem.image && (
@@ -230,14 +225,14 @@ export function Categories() {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative h-full flex flex-col justify-end p-4 lg:p-6">
-                    <h3 className="text-lg lg:text-xl font-bold text-white mb-2">
+                  <div className="relative h-full flex flex-col justify-end p-3 sm:p-4 lg:p-6">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1 sm:mb-2">
                       {categoryItem.name}
                     </h3>
                     <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <span className="inline-flex items-center text-sm text-white">
+                      <span className="inline-flex items-center text-xs sm:text-sm text-white">
                         Explore Products
-                        <ChevronRight className="ml-1 h-4 w-4" />
+                        <ChevronRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                       </span>
                     </div>
                   </div>
