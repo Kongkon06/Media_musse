@@ -1,41 +1,60 @@
 import { Star } from "./Star";
+import { MapPin, Phone, Clock } from "lucide-react";
+import { Button } from "@/Components/ui/button";
 
-interface RestaurantCardProps {
-    src: string;
-    name: string;
-    address: string;
-  }
-  
-  export function StoreCard({ src, name, address }: RestaurantCardProps){
-    return (
-      <div className="w-full h-56 shadow-lg rounded-lg overflow-hidden flex bg-white hover:shadow-xl transition-shadow duration-300">
-        <div className="w-1/3 md:w-1/4">
-          <img 
-            src={src} 
-            alt={name}
-            className="h-full w-full object-cover"
-          />
-        </div>
+interface StoreCardProps {
+  name: string;
+  address: string;
+  src: string;
+}
+
+export function StoreCard({ name, address, src }: StoreCardProps) {
+  return (
+    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+      <div className="aspect-video relative overflow-hidden">
+        <img
+          src={src}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+      <div className="p-4 space-y-4">
+        <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
         
-        <div className="flex-1 p-6 flex flex-col justify-between">
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">{name}</h2>
-            <p className="text-gray-600 mb-4 text-sm">{address}</p>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-gray-600">
+            <MapPin className="h-4 w-4 text-deal-purple" />
+            <span className="text-sm">{address}</span>
           </div>
-          
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-2 text-gray-600">
+            <Clock className="h-4 w-4 text-deal-orange" />
+            <span className="text-sm">Open: 9:00 AM - 9:00 PM</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <Phone className="h-4 w-4 text-green-500" />
+            <span className="text-sm">+91 1234567890</span>
+          </div>
+        </div>
+        <div className="space-y-2">
+            <div className="flex items-center gap-2 ">
               <Star number={4} />
               <span className="text-sm text-gray-500">(4.0)</span>
             </div>
-            
-            <div className="flex items-center space-x-2">
-              <span className="px-3 py-1 text-sm text-green-600 bg-green-50 rounded-full">Open Now</span>
-              <span className="text-sm text-gray-500">• 0.8 miles away</span>
-            </div>
           </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            className="flex-1 border-deal-purple text-deal-purple hover:bg-deal-purple hover:text-white"
+          >
+            Get Directions
+          </Button>
+          <Button
+            className="flex-1 bg-gradient-to-r from-deal-purple to-deal-orange text-white hover:opacity-90"
+          >
+            Contact Store
+          </Button>
         </div>
       </div>
-    );
-  };
-  ;
+    </div>
+  );
+}

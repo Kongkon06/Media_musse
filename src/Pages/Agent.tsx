@@ -1,13 +1,11 @@
 import { useRecoilValue } from "recoil";
-import { Appbar } from "../Components/Appbar";
-import { SearchBar } from "../Components/SearchBar";
-import { StoreCard } from "../Components/StoreCard";
-import { randomstores } from "../States/Atom";
-import { Home, Package, ShoppingCart, Store, Tag, Menu, X } from "lucide-react";
-import { Button } from "@/Components/Button";
-import { useNavigate } from "react-router-dom";
+import { Appbar } from "@/Components/Appbar";
+import { SearchBar } from "@/Components/SearchBar";
+import { StoreCard } from "@/Components/StoreCard";
+import { randomstores } from "@/States/Atom";
+import Footer from "@/Components/Footer";
+import { Store, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 interface Store {
   id: number;
@@ -18,97 +16,106 @@ interface Store {
 
 export function Agent() {
   const stores = useRecoilValue(randomstores);
-  const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const sidebarItems = [
-    { icon: Home, label: "Home", route: "/" },
-    { icon: Package, label: "Categories", route: "/categories" },
-    { icon: Store, label: "Brands", route: "/brands" },
-    { icon: Tag, label: "Deals", route: "/deals" },
-    { icon: ShoppingCart, label: "Cart", route: "/cart" },
-  ];
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-  const handleNavigation = (route: string) => {
-    navigate(route);
-    setIsSidebarOpen(false);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
   };
 
   return (
-    <div className="flex min-h-screen relative bg-gray-50">
-      {/* Mobile Menu Button */}
-      <Button
-        variant="ghost"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2"
-        aria-label="Toggle menu"
+    <div className="min-h-screen bg-gradient-to-br from-deal-purple/5 to-deal-orange/5">
+      <Appbar />
+      
+      {/* Hero Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="container mx-auto px-4 pt-24 md:pt-32"
       >
-        {isSidebarOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <Menu className="h-6 w-6" />
-        )}
-      </Button>
-
-      {/* Sidebar */}
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{
-          x: isSidebarOpen ? 0 : window.innerWidth < 1024 ? -300 : 0,
-          opacity: window.innerWidth < 1024 ? (isSidebarOpen ? 1 : 0) : 1,
-        }}
-        transition={{ duration: 0.3 }}
-        className={`fixed lg:relative lg:h-screen w-[280px] lg:w-1/5 bg-white shadow-md pt-20 px-4 z-40
-    ${isSidebarOpen ? "block" : "hidden lg:block"}`}
-      >
-        {sidebarItems.map((item) => (
-          <Button
-            key={item.label}
-            aria-label={`Navigate to ${item.label}`}
-            variant="ghost"
-            className="w-full justify-start gap-2 mb-2 text-lg font-medium text-gray-700 
-        hover:text-deal-purple hover:bg-deal-purple/10 transition-all duration-300"
-            onClick={() => handleNavigation(item.route)}
-          >
-            <item.icon className="h-5 w-5" />
-            {item.label}
-          </Button>
-        ))}
-      </motion.div>
-
-
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
-
-      {/* Main Content */}
-      <div className="flex-grow">
-        <Appbar />
-        <div className="flex flex-col items-center font-dm-sans gap-10 pt-16 px-8">
-          <div className=" pt-20 flex lg:pt-1 text-xl">
-            We are <div className="text-green-400 underline mx-2">available</div> in most parts of India
+        <div className="text-center space-y-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-deal-purple to-deal-orange bg-clip-text text-transparent">
+            Find Our Stores Near You
+          </h1>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-lg md:text-xl">
+            <span>We are</span>
+            <div className="flex items-center gap-2 px-3 py-1 bg-green-400/10 rounded-full text-green-600 font-medium">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              available
+            </div>
+            <span>in most parts of India</span>
           </div>
+        </div>
+
+        {/* Search Section */}
+        <div className="max-w-2xl mx-auto mt-8 md:mt-12">
           <SearchBar />
         </div>
-        <div className="my-10 text-xl p-4 flex flex-wrap justify-center items-center gap-6">
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 gap-4 max-w-4xl mx-auto mt-12 mb-16"> {/* md:grid-cols-4 for future use */}
+          {[
+            { icon: Store, label: "Stores", value: "500+" },
+            { icon: MapPin, label: "Cities", value: "100+" }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-sm text-center"
+            >
+              <stat.icon className="w-6 h-6 mx-auto mb-2 text-deal-purple" />
+              <div className="font-bold text-xl md:text-2xl text-gray-800">{stat.value}</div>
+              <div className="text-sm text-gray-600">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Stores Grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="container mx-auto px-4 pb-16"
+      >
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+          Our Stores
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {stores.length === 0 ? (
-            <p className="text-gray-500">No stores available currently.</p>
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-500 text-lg">No stores available currently.</p>
+            </div>
           ) : (
             stores.map((item: Store) => (
-              <StoreCard
+              <motion.div
                 key={item.id}
-                name={item.name}
-                address={item.address}
-                src={item.src}
-              />
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                className="transform transition-all duration-300"
+              >
+                <StoreCard
+                  name={item.name}
+                  address={item.address}
+                  src={item.src}
+                />
+              </motion.div>
             ))
           )}
         </div>
-      </div>
+      </motion.div>
+
+      <Footer />
     </div>
   );
 }
